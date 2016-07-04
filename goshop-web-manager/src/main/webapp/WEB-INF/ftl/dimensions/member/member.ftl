@@ -99,13 +99,13 @@
         <tr class="hover member" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;">
             <td class="w24"></td>
             <td class="w48 picture"><div class="size-44x44"><span class="thumb size-44x44"><i></i><img width="44" height="44" onload="javascript:DrawImage(this,44,44);" src="${S_URL}/static/images/default_user_portrait.gif"></span></div></td>
-            <td><p class="name"><strong>${o.loginName}</strong>(真实姓名: ${o.memberTruename!})</p>
+            <td><p class="name"><strong>${o.loginName!}</strong>(真实姓名: ${o.memberTruename!})</p>
                 <p class="smallfont">注册时间:&nbsp;${o.memberTime?string("yyyy-MM-dd HH:mm:ss")}</p>
 
                 <div class="im"><span class="email">
                                 <a title="电子邮箱:${o.memberEmail}" class=" yes" href="mailto:${o.memberEmail}">${o.memberEmail}</a></span>
                 </div></td>
-            <td class="align-center">${o.loginNum}</td>
+            <td class="align-center">${o.loginNum!0}</td>
             <td class="w150 align-center"><p>${(o.loginTime?string("yyyy-MM-dd HH:mm:ss"))!}</p>
                 <p>${o.loginIp!}</p></td>
             <td class="align-center">${o.memberPoints}</td>
