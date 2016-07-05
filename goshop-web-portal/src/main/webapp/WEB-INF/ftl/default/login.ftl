@@ -129,7 +129,7 @@ catch(e){}
                 <dl>
                     <dt>&nbsp;</dt>
                     <dd>
-                        <input type="button" name="Submit" value="登&nbsp;&nbsp;&nbsp;录" class="submit">
+                        <input type="button" name="_submit" value="登&nbsp;&nbsp;&nbsp;录" class="submit">
                         <a href="${S_URL}/forget_password.html" class="forget">忘记密码？</a>
                     </dd>
                 </dl>
@@ -145,7 +145,7 @@ catch(e){}
 
 <script>
     $(document).ready(function(){
-        $('input[name="Submit"]').click(function(){
+        $('input[name="_submit"]').click(function(){
             if($("#login_form").valid()){
                 $("#login_form").submit();
             } else{
