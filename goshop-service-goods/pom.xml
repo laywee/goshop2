@@ -10,7 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>goshop-service-goods</artifactId>
+    <packaging>war</packaging>
 
+    <properties>
+        <server.port>8092</server.port>
+        <server.path>/service-goods</server.path>
+    </properties>
 
     <!-- 依赖管理 -->
     <dependencies>

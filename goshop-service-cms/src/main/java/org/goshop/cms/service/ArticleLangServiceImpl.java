@@ -1,19 +1,19 @@
 package org.goshop.cms.service;
 
 import com.github.pagehelper.PageInfo;
-import org.goshop.common.utils.PageUtils;
 import org.goshop.cms.i.ArticleLangService;
 import org.goshop.cms.mapper.master.ArticleLangInfoMapper;
 import org.goshop.cms.mapper.master.ArticleLangMainMapper;
 import org.goshop.cms.pojo.ArticleLangInfo;
 import org.goshop.cms.pojo.ArticleLangMain;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
+import org.goshop.common.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
-@Service("articleLangService")
+@DubboService(interfaceClass = ArticleLangService.class)
 public class ArticleLangServiceImpl implements ArticleLangService {
 
     @Autowired

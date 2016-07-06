@@ -8,12 +8,28 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-	<!-- 加载配置文件 -->
-	<context:property-placeholder  ignore-resource-not-found="true"
-								   location="classpath:common.properties,classpath:resource/email.properties,
-                                  file:/usr/jar_home/users/resource/email.properties" />
-	<!-- 扫描包加载Service实现类 -->
-	<context:component-scan base-package="org.goshop.*.service" />
-	<import resource="classpath:spring/applicationContext-dubbo-provider.xml" />
 
+	<!-- 引入属性配置文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/redis.properties</value>
+				<value>classpath:config/dubbo.properties</value>
+				<value>classpath:config/email.properties</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="dubbo.application.name">goshop-email</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="org.goshop.email.service">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!--<import resource="classpath:spring/applicationContext-dubbo-provider.xml" />-->
+	<import resource="classpath:spring/dubbo.xml" />
 </beans>

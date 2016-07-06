@@ -1,18 +1,18 @@
 package org.goshop.cms.service;
 
 import com.github.pagehelper.PageInfo;
-import org.goshop.common.exception.MapperException;
-import org.goshop.common.utils.PageUtils;
 import org.goshop.cms.i.CmsArticleClassService;
 import org.goshop.cms.mapper.master.CmsArticleClassMapper;
 import org.goshop.cms.pojo.CmsArticleClass;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
+import org.goshop.common.exception.MapperException;
+import org.goshop.common.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.List;
 
-@Service("cmsArticleClassService")
+@DubboService(interfaceClass = CmsArticleClassService.class)
 public class CmsArticleClassServiceImpl implements CmsArticleClassService{
 
     @Autowired

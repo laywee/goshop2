@@ -2,17 +2,17 @@ package org.goshop.cms.service;
 
 
 import com.github.pagehelper.PageInfo;
-import org.goshop.common.utils.PageUtils;
 import org.goshop.cms.i.CmsArticleService;
 import org.goshop.cms.mapper.master.CmsArticleMapper;
 import org.goshop.cms.pojo.CmsArticle;
 import org.goshop.cms.pojo.CmsArticleWithBLOBs;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
+import org.goshop.common.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("cmsArticleService")
+@DubboService(interfaceClass = CmsArticleService.class)
 public class CmsArticleServiceImpl implements CmsArticleService {
 
     @Autowired

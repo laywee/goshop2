@@ -3,12 +3,12 @@ package org.goshop.cms.service;
 import org.goshop.cms.i.CmsSlideService;
 import org.goshop.cms.mapper.master.CmsSlideMapper;
 import org.goshop.cms.pojo.CmsSlide;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("cmsSlideService")
+@DubboService(interfaceClass = CmsSlideService.class)
 public class CmsSlideServiceImpl implements CmsSlideService {
 
     @Autowired
