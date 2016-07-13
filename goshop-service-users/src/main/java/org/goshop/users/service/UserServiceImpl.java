@@ -1,5 +1,6 @@
 package org.goshop.users.service;
 
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.goshop.common.exception.MapperException;
 import org.goshop.common.utils.RandomUtils;
 import org.goshop.shiro.service.PasswordService;
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/6/11.
  */
-@Service("userService")
+@DubboService(interfaceClass = UserService.class)
 public class UserServiceImpl implements UserService {
 
     @Autowired

@@ -1,6 +1,8 @@
 package org.goshop.users.service;
 
 import com.github.pagehelper.PageInfo;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.goshop.common.exception.MapperException;
 import org.goshop.common.utils.PageUtils;
 import org.goshop.common.utils.RandomUtils;
@@ -23,7 +25,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
-@Service("memberService")
+@DubboService(interfaceClass = MemberService.class)
 public class MemberServiceImpl implements MemberService {
 
     @Autowired
@@ -39,6 +41,7 @@ public class MemberServiceImpl implements MemberService {
     FindPasswordService findPasswordService;
 
     @Autowired
+    @DubboReference
     EMailService eMailService;
 
     @Autowired

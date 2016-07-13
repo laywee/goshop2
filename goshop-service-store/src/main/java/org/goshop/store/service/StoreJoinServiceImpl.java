@@ -1,6 +1,8 @@
 package org.goshop.store.service;
 
 import com.github.pagehelper.PageInfo;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.goshop.common.exception.MapperException;
 import org.goshop.common.exception.PageException;
 import org.goshop.common.utils.PageUtils;
@@ -26,7 +28,7 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("storeJoinService")
+@DubboService(interfaceClass = StoreJoinService.class)
 public class StoreJoinServiceImpl implements StoreJoinService {
 
     protected final Log logger = LogFactory.getLog(this.getClass());
@@ -45,6 +47,7 @@ public class StoreJoinServiceImpl implements StoreJoinService {
     @Autowired
     StoreGradeService storeGradeService;
 
+    @DubboReference
     @Autowired
     GoodsClassService goodsClassService;
 

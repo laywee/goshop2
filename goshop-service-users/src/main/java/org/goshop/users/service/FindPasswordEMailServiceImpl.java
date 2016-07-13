@@ -1,5 +1,6 @@
 package org.goshop.users.service;
 
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.goshop.common.utils.RandomUtils;
 import org.goshop.users.mapper.master.FindPasswordMapper;
 import org.goshop.users.pojo.FindPassword;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.text.MessageFormat;
 
-@Service
+@DubboService(interfaceClass = FindPasswordService.class)
 public class FindPasswordEMailServiceImpl implements FindPasswordService {
 
     @Value("${SHOP_URL}")

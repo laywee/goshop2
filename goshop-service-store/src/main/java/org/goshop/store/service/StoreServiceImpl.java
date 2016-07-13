@@ -1,6 +1,7 @@
 package org.goshop.store.service;
 
 import com.github.pagehelper.PageInfo;
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.goshop.common.utils.PageUtils;
 import org.goshop.store.i.StoreService;
 import org.goshop.store.mapper.master.StoreMapper;
@@ -15,7 +16,7 @@ import org.springframework.util.StringUtils;
 import java.util.Date;
 import java.util.List;
 
-@Service("storeService")
+@DubboService(interfaceClass = StoreService.class)
 public class StoreServiceImpl implements StoreService {
 
     @Autowired

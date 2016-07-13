@@ -1,6 +1,7 @@
 package org.goshop.users.service;
 
 
+import org.goshop.common.dubbo.spring.annotation.DubboService;
 import org.goshop.users.i.AdminService;
 import org.goshop.users.mapper.master.RoleMapper;
 import org.goshop.users.mapper.master.UserMapper;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Service("adminService")
+@DubboService(interfaceClass = AdminService.class)
 public class AdminServiceImpl implements AdminService {
 
     private final static String ADMIN_ROLE="admin";
