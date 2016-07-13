@@ -2,6 +2,7 @@ package org.goshop.manager.controller;
 
 import com.github.pagehelper.PageInfo;
 import org.goshop.common.attachment.AttachmentService;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
 import org.goshop.common.exception.PageException;
 import org.goshop.common.pojo.ResponseStatus;
 import org.goshop.common.utils.IDUtils;
@@ -35,10 +36,10 @@ import java.util.Map;
 @RequestMapping("/cms_article")
 public class CmsArticleController {
 
-    @Autowired
+    @DubboReference
     CmsArticleService cmsArticleService;
 
-    @Autowired
+    @DubboReference
     CmsArticleClassService cmsArticleClassService;
 
     @Autowired

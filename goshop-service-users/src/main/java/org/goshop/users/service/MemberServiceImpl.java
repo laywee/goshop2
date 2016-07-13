@@ -40,7 +40,6 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     FindPasswordService findPasswordService;
 
-    @Autowired
     @DubboReference
     EMailService eMailService;
 

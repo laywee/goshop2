@@ -6,6 +6,7 @@ import org.goshop.cms.pojo.ArticleLangMain;
 import org.goshop.cms.pojo.CmsArticleClass;
 import org.goshop.common.attachment.AttachmentService;
 import org.goshop.common.context.CustomTimestampEditor;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
 import org.goshop.common.exception.PageException;
 import org.goshop.common.utils.IDUtils;
 import org.goshop.common.web.utils.JsonUtils;
@@ -39,10 +40,10 @@ import java.util.Map;
 @RequestMapping("/article_lang")
 public class ArticleLangController {
 
-    @Autowired
+    @DubboReference
     ArticleLangService articleLangService;
 
-    @Autowired
+    @DubboReference
     CmsArticleClassService cmsArticleClassService;
 
     @Autowired

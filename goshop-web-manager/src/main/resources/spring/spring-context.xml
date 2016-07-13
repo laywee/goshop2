@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!-- 加载配置文件 -->
-	<context:property-placeholder  ignore-resource-not-found="true"
-								   location="classpath:common.properties,classpath:resource/*.properties,
-                                  file:/usr/web_home/manage/resource/*.properties" />
+	<!-- 引入属性配置文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/redis.properties</value>
+				<value>classpath:config/dubbo.properties</value>
+				<value>classpath:config/freemarker.properties</value>
+				<value>classpath:config/resource.properties</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="dubbo.application.name">goshop-web-manager</prop>
+				<prop key="dubbo.protocol.port">20880</prop>
+				<!-- Web端常用数据缓存时间(秒) -->
+				<prop key="redis.expiration">1800</prop>
+			</props>
+		</property>
+	</bean>
 
 	<!-- 扫描包加载Service实现类-->
-	<context:component-scan base-package="org.goshop.*.service,org.goshop.*.context" />
+	<context:component-scan base-package="org.goshop.*.service,org.goshop.*.context" >
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.cache.annotation.EnableCaching" />
+	</context:component-scan>
 
-<!--	<import resource="classpath:spring/applicationContext-jedis.xml" />
-	<import resource="classpath:spring/dubbo-consumer.xml" />
-	<import resource="classpath:spring/applicationContext-shiro.xml" />-->
-	<import resource="classpath:dubbo/dubbo-consumer.xml" />
+	<import resource="classpath:spring/dubbo.xml" />
+	<!-- 拦截器使用对象,使用Spring注入 -->
+	<dubbo:reference id="userService"  interface="org.goshop.users.i.UserService" check="false" />
 
-
+	<!--本地文件-->
+	<bean id="attachmentService" class="org.goshop.common.attachment.LocalhostAttachmentImpl" />
+	<!-- 文件服务器
+    <bean id="attachmentService" class="org.goshop.common.attachment.FastDFSAttachmentImpl" >
+        <property name="hostName" value="${fastdfs.hostName}" />
+        <property name="port" value="${fastdfs.port}" />
+        <property name="charset" value="${fastdfs.charset}" />
+        <property name="networkTimeout" value="${fastdfs.networkTimeout}" />
+        <property name="http" value="${fastdfs.http}" />
+    </bean>-->
+	<bean id="message" class="org.goshop.common.context.RedisMessage" />
 
 </beans>

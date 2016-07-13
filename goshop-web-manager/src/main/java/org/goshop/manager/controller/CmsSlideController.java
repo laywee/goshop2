@@ -1,6 +1,7 @@
 package org.goshop.manager.controller;
 
 import org.goshop.common.attachment.AttachmentService;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
 import org.goshop.common.exception.PageException;
 import org.goshop.cms.i.CmsSlideService;
 import org.goshop.cms.pojo.CmsSlide;
@@ -24,7 +25,7 @@ import java.util.Map;
 @RequestMapping("/cms_slide")
 public class CmsSlideController {
 
-    @Autowired
+    @DubboReference
     CmsSlideService cmsSlideService;
 
     @Autowired

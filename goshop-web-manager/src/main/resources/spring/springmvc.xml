@@ -11,14 +11,13 @@
     <mvc:annotation-driven/>
 
     <bean id="exceptionResolver" class="org.goshop.common.context.ExceptionHandler" />
-    <bean id="message" class="org.goshop.common.context.RedisMessage" />
 
     <context:property-placeholder  ignore-resource-not-found="true"
-                                    location="classpath:resource/*.properties,
+                                    location="classpath:config/*.properties,
                                   file:/root/web_home/manager/resource/*.properties" />
     <bean id="freemarkerConfiguration"
           class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:resource/freemarker.properties" />
+        <property name="location" value="classpath:config/freemarker.properties" />
 
     </bean>
 
@@ -78,15 +77,6 @@
         <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
         <property name="maxUploadSize" value="5242880"></property>
     </bean>
-    <!--本地文件-->
-    <bean id="attachmentService" class="org.goshop.common.attachment.LocalhostAttachmentImpl" />
-    <!-- 文件服务器
-    <bean id="attachmentService" class="org.goshop.common.attachment.FastDFSAttachmentImpl" >
-        <property name="hostName" value="${fastdfs.hostName}" />
-        <property name="port" value="${fastdfs.port}" />
-        <property name="charset" value="${fastdfs.charset}" />
-        <property name="networkTimeout" value="${fastdfs.networkTimeout}" />
-        <property name="http" value="${fastdfs.http}" />
-    </bean>-->
+
 
 </beans>

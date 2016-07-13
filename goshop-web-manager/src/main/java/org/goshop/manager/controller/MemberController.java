@@ -2,6 +2,7 @@ package org.goshop.manager.controller;
 
 
 import com.github.pagehelper.PageInfo;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
 import org.goshop.common.pojo.ResponseStatus;
 import org.goshop.manager.utils.Jump;
 import org.goshop.users.i.AdminService;
@@ -22,10 +23,10 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value =  "/member")
 public class MemberController {
 
-    @Autowired
+    @DubboReference
     MemberService memberService;
 
-    @Autowired
+    @DubboReference
     AdminService adminService;
 
     @RequestMapping(value = "/member", method = RequestMethod.GET)

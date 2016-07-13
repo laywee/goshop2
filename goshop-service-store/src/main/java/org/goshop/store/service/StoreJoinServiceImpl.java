@@ -48,7 +48,6 @@ public class StoreJoinServiceImpl implements StoreJoinService {
     StoreGradeService storeGradeService;
 
     @DubboReference
-    @Autowired
     GoodsClassService goodsClassService;
 
     @Autowired

@@ -15,11 +15,13 @@
 				<value>classpath:config/redis.properties</value>
 				<value>classpath:config/dubbo.properties</value>
 				<value>classpath:config/db.properties</value>
+				<value>classpath:config/resource.properties</value>
 			</list>
 		</property>
 		<property name="properties">
 			<props>
 				<prop key="dubbo.application.name">goshop-service-users</prop>
+				<prop key="dubbo.protocol.port">20886</prop>
 			</props>
 		</property>
 	</bean>

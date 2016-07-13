@@ -21,6 +21,7 @@
 		<property name="properties">
 			<props>
 				<prop key="dubbo.application.name">goshop-service-goods</prop>
+				<prop key="dubbo.protocol.port">20882</prop>
 			</props>
 		</property>
 	</bean>

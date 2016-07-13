@@ -1,6 +1,7 @@
 package org.goshop.manager.controller;
 
 import com.github.pagehelper.PageInfo;
+import org.goshop.common.dubbo.spring.annotation.DubboReference;
 import org.goshop.common.pojo.ResponseStatus;
 import org.goshop.cms.i.CmsArticleClassService;
 import org.goshop.cms.pojo.CmsArticleClass;
@@ -21,7 +22,7 @@ import java.util.List;
 @RequestMapping("/cms_article_class")
 public class CmsArticleClassController {
 
-    @Autowired
+    @DubboReference
     CmsArticleClassService cmsArticleClassService;
 
     @RequestMapping(value = "index",method = RequestMethod.GET)
